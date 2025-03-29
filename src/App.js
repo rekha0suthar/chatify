@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Sidebar from './components/Sidebar';
+import ChatWindow from './components/ChatWindow';
+
+const AppContainer = styled.div`
+  display: flex;
+  height: 100vh;
+  background-color: #f0f2f5;
+`;
 
 function App() {
+  const [selectedContact, setSelectedContact] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <Sidebar onSelectContact={setSelectedContact} />
+      <ChatWindow selectedContact={selectedContact} />
+    </AppContainer>
   );
 }
 
